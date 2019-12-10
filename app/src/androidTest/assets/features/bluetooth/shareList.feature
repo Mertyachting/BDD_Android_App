@@ -7,4 +7,3 @@ Feature: Share via Bluetooth
     And cofirms he wants to share his list
     Then Bob should see his file was sent
 
-    
