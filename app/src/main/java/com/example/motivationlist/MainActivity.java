@@ -1,55 +1,110 @@
 package com.example.motivationlist;
 
-import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.content.Context;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.demo.sqlitedababase.test.MainActivity2;
 import com.google.android.material.snackbar.Snackbar;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-
 public class MainActivity extends AppCompatActivity {
+    EditText e_name, e_email, e_username, e_phnumber;
+    Button bt_save,viewdata,viewdatall;
+    public static final String DATABASE_NAME = "StudentDatabases.db";
+    SQLiteDatabase mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        mDatabase = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
+        createEmployeeTable();
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+
+        //FindById (Button and Edittxt)
+        e_name = (EditText) findViewById(R.id.e_name);
+        e_email = (EditText) findViewById(R.id.e_email);
+        e_username = (EditText) findViewById(R.id.e_username);
+        e_phnumber = (EditText) findViewById(R.id.e_phnumber);
+
+        bt_save = (Button) findViewById(R.id.btn_save);
+        viewdatall=(Button)findViewById(R.id.viewdataLL);
+        viewdatall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent= new Intent(MainActivity.this, EmployeeActivity.class);
+                startActivity(intent);
             }
         });
+
+
+
+        viewdata = (Button) findViewById(R.id.viewdata);
+        viewdata.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
+            }
+        });
+
+        //Onclick Btn
+        bt_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Get the Enter data
+                String name = e_name.getText().toString().trim();
+                String email = e_email.getText().toString().trim();
+                String username = e_username.getText().toString();
+                String phone = e_phnumber.getText().toString();
+
+
+                if (name.isEmpty() || email.isEmpty() || username.isEmpty() || phone.isEmpty()) {
+
+                    Toast.makeText(MainActivity.this, "Fil the form", Toast.LENGTH_SHORT).show();
+
+                } else {
+
+                    String insertSQL = "INSERT INTO Student \n" +
+                            "(Name, Email, UserName, PhoneNo)\n" +
+                            "VALUES \n" +
+                            "(?, ?, ?, ?);";
+
+                    //using the same method execsql for inserting values
+                    //this time it has two parameters
+                    //first is the sql string and second is the parameters that is to be binded with the query
+                    mDatabase.execSQL(insertSQL, new String[]{name, email, username, phone});
+
+                    Toast.makeText(MainActivity.this, "Great! Data Saved", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+    private void createEmployeeTable() {
+        mDatabase.execSQL("CREATE TABLE IF NOT EXISTS Student " +
+                "(\n" +
+                "    id INTEGER NOT NULL CONSTRAINT employees_pk PRIMARY KEY AUTOINCREMENT,\n" +
+                "    Name varchar(200) NOT NULL,\n" +
+                "    Email varchar(200) NOT NULL,\n" +
+                "    UserName varchar(200) NOT NULL,\n" +
+                "    PhoneNo Varchar(200) NOT NULL\n" +
+                ");"
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+        );
     }
 }
