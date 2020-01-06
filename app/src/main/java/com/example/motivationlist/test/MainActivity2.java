@@ -1,4 +1,4 @@
-package com.demo.sqlitedababase.test;
+package com.example.motivationlist.test;
 
 
 import android.database.Cursor;
@@ -10,10 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.demo.sqlitedababase.Employee;
-import com.demo.sqlitedababase.EmployeeAdapter;
-import com.demo.sqlitedababase.MainActivity;
-import com.demo.sqlitedababase.R;
+import com.example.motivationlist.Employee;
+import com.example.motivationlist.EmployeeAdapter;
+import com.example.motivationlist.MainActivity;
+import com.example.motivationlist.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;

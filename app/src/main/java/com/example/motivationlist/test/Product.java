@@ -1,4 +1,4 @@
-package com.demo.sqlitedababase.test;
+package com.example.motivationlist.test;
 
 /**
  * Created by Belal on 10/18/2017.

@@ -1,8 +1,6 @@
 package com.example.motivationlist;
 
-/**
- * Created by Belal on 9/30/2017.
- */
+
 
 public class Employee {
     private int id;

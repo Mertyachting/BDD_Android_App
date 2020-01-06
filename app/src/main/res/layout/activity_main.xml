@@ -22,7 +22,7 @@
         android:id="@+id/e_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="Motivation"
         android:inputType="textEmailAddress"
         android:textColorHint="#3700B3" />
 
@@ -30,17 +30,10 @@
         android:id="@+id/e_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Username"
+        android:hint="ToDO"
         android:inputType="text"
         android:textColorHint="#3700B3" />
 
-    <EditText
-        android:id="@+id/e_phnumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Phone Number"
-        android:inputType="number"
-        android:textColorHint="#3700B3" />
 
 
     <Button
