@@ -21,8 +21,6 @@ import app.akexorcist.bluetotohspp.library.BluetoothState;
 public class MainActivity extends AppCompatActivity {
 
 
-
-
     EditText e_name, e_email, e_username, e_phnumber;
     Button bt_save,viewdata,viewdatall;
     public static final String DATABASE_NAME = "StudentDatabases.db";
@@ -36,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
         mDatabase = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
         createEmployeeTable();
         BluetoothSPP bt = new BluetoothSPP(this);
+        if(!bt.isBluetoothAvailable()) {
+            System.out.println("notavailable");
+        }
+        else {
+            bt.startService(BluetoothState.DEVICE_ANDROID);
+        }
 
 
 
@@ -110,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
 
     private void createEmployeeTable() {
         mDatabase.execSQL("CREATE TABLE IF NOT EXISTS Student " +
