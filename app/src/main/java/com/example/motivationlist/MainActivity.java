@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         e_name = (EditText) findViewById(R.id.e_name);
         e_email = (EditText) findViewById(R.id.e_email);
         e_username = (EditText) findViewById(R.id.e_username);
-
+        e_phnumber = (EditText) findViewById(R.id.e_phnumber);
 
         bt_save = (Button) findViewById(R.id.btn_save);
         viewdatall=(Button)findViewById(R.id.viewdataLL);
@@ -66,9 +66,10 @@ public class MainActivity extends AppCompatActivity {
                 String name = e_name.getText().toString().trim();
                 String email = e_email.getText().toString().trim();
                 String username = e_username.getText().toString();
+                String phone = e_phnumber.getText().toString();
 
 
-                if (name.isEmpty() || email.isEmpty() || username.isEmpty()) {
+                if (name.isEmpty() || email.isEmpty() || username.isEmpty() || phone.isEmpty()) {
 
                     Toast.makeText(MainActivity.this, "Fil the form", Toast.LENGTH_SHORT).show();
 
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     //using the same method execsql for inserting values
                     //this time it has two parameters
                     //first is the sql string and second is the parameters that is to be binded with the query
-                    mDatabase.execSQL(insertSQL, new String[]{name, email, username, });
+                    mDatabase.execSQL(insertSQL, new String[]{name, email, username, phone});
 
                     Toast.makeText(MainActivity.this, "Great! Data Saved", Toast.LENGTH_SHORT).show();
                 }

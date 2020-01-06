@@ -34,6 +34,14 @@
         android:inputType="text"
         android:textColorHint="#3700B3" />
 
+    <EditText
+        android:id="@+id/e_phnumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number"
+        android:inputType="number"
+        android:textColorHint="#3700B3" />
+
 
 
     <Button

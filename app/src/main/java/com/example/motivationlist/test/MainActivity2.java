@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity2 extends AppCompatActivity {
-
     //a list to store all the products
     List<Product> productList;
     RecyclerView recyclerView;

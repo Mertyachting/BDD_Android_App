@@ -31,7 +31,6 @@ import java.util.List;
 
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
-
     int custom_list_item;
     SQLiteDatabase mDatabase;
 
@@ -90,7 +89,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                         Snackbar.make(view, "Deleted" + product.getName(), Snackbar.LENGTH_SHORT).show();
                         Toast.makeText(mCtx, "Deleted successfully!", Toast.LENGTH_SHORT).show();
 
-                          reloadEmployeesFromDatabase(); //Reload List
+                        reloadEmployeesFromDatabase(); //Reload List
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
