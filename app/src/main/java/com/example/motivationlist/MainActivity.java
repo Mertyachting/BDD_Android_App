@@ -15,7 +15,14 @@ import android.widget.Toast;
 import com.example.motivationlist.test.MainActivity2;
 import com.google.android.material.snackbar.Snackbar;
 
+import app.akexorcist.bluetotohspp.library.BluetoothSPP;
+import app.akexorcist.bluetotohspp.library.BluetoothState;
+
 public class MainActivity extends AppCompatActivity {
+
+
+
+
     EditText e_name, e_email, e_username, e_phnumber;
     Button bt_save,viewdata,viewdatall;
     public static final String DATABASE_NAME = "StudentDatabases.db";
@@ -28,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mDatabase = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
         createEmployeeTable();
+        BluetoothSPP bt = new BluetoothSPP(this);
+
+
 
 
         //FindById (Button and Edittxt)
@@ -45,6 +55,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        if(!bt.isBluetoothAvailable()) {
+            System.out.println("no bluetooth available");
+        }
+
+        bt.startService(BluetoothState.DEVICE_ANDROID);
 
 
 
