@@ -18,17 +18,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import  com.example.motivationlist.Employee;
-import  com.example.motivationlist.MainActivity;
-import  com.example.motivationlist.R;
+import com.example.motivationlist.Employee;
+import com.example.motivationlist.MainActivity;
+import com.example.motivationlist.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
-
-/**
- * Created by Belal on 10/18/2017.
- */
-
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     int custom_list_item;
@@ -105,6 +100,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
 
     }
+
     void reloadEmployeesFromDatabase() {
         Cursor cursorproduct1 = mDatabase.rawQuery("SELECT * FROM Student", null);
         if (cursorproduct1.moveToFirst()) {
@@ -115,12 +111,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                         cursorproduct1.getString(1),
                         cursorproduct1.getString(2),
                         cursorproduct1.getString(3),
-                        cursorproduct1.getString(4)   ));
+                        cursorproduct1.getString(4)));
             } while (cursorproduct1.moveToNext());
         }
         cursorproduct1.close();
         notifyDataSetChanged();
     }
+
     private void updateEmployee(final Product product) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(mCtx);
 
@@ -133,7 +130,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         final EditText editUsername = view.findViewById(R.id.editUsername);
         final EditText editemail = view.findViewById(R.id.editEmail);
         final EditText editphno = view.findViewById(R.id.editTextphno);
-
 
 
         editTextName.setText(product.getName());
@@ -154,7 +150,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 String phno = editphno.getText().toString().trim();
 
 
-
                 if (name.isEmpty()) {
                     editTextName.setError("Name can't be blank");
                     editTextName.requestFocus();
@@ -169,12 +164,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
                 String sql = "UPDATE Student \n" +
                         "SET Name = ?, \n" +
-                        "Email = ?,\n"+
-                        "Username = ?,\n"+
+                        "Email = ?,\n" +
+                        "Username = ?,\n" +
                         " PhoneNO= ? \n" +
                         "WHERE id = ?;\n";
 
-                mDatabase.execSQL(sql, new String[]{name, email,username,phno, String.valueOf(product.getId())});
+                mDatabase.execSQL(sql, new String[]{name, email, username, phno, String.valueOf(product.getId())});
                 Toast.makeText(mCtx, "Student Updated", Toast.LENGTH_SHORT).show();
 
                 dialog.dismiss();

@@ -1,73 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="20dp"
-    android:background="#ffff"
+    android:background="#fff"
+    android:orientation="vertical"
     android:padding="20dp"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/task_add_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/asap_bold"
+        android:text="@string/task_to_add"
+        android:textColor="@color/app_name_text"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/e_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/asap"
+        android:hint="@string/first_hint"
         android:inputType="text"
-        android:textColorHint="#3700B3" />
+        android:textColorHint="#433A3A3A" />
 
     <EditText
         android:id="@+id/e_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Motivation"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/asap"
+        android:hint="@string/second_hint"
         android:inputType="textEmailAddress"
-        android:textColorHint="#3700B3" />
+        android:textColorHint="@color/placeholder" />
 
     <EditText
         android:id="@+id/e_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ToDO"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/asap"
+        android:hint="@string/third_hint"
         android:inputType="text"
-        android:textColorHint="#3700B3" />
+        android:textColorHint="@color/placeholder" />
 
     <EditText
         android:id="@+id/e_phnumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Phone Number"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/asap"
+        android:hint="@string/fourth_hint"
         android:inputType="number"
-        android:textColorHint="#3700B3" />
+        android:textColorHint="@color/placeholder" />
 
-
-
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="#03D4AC"
-        android:text="Save" />
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/viewdata"
-        android:layout_margin="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="#03D4AC"
-        android:text="View data(RecycleView)" />
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/RelativeLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="10dp">
 
-    <Button
-        android:id="@+id/viewdataLL"
-        android:layout_margin="20dp"
-        android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@color/primaryLightColor"
+                android:fontFamily="@font/asap_bold"
+                android:text="@string/create_list"
+                android:layout_alignParentLeft="true" />
+
+            <Button
+                android:id="@+id/viewdata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@color/button_background"
+                android:layout_alignParentRight="true"
+                android:fontFamily="@font/asap"
+                android:text="@string/overview_list" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="#03D4AC"
-        android:text="View data(ListView)" />
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/viewdataLL"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/start_quote2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/asap_italic"
+            android:text="@string/list_quote"
+            android:textAlignment="center"
+            android:textColor="@color/quote"
+            android:textSize="16sp"
+            tools:text="@string/list_quote" />
+    </LinearLayout>
 
 </LinearLayout>

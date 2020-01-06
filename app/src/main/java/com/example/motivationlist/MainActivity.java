@@ -17,7 +17,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
     EditText e_name, e_email, e_username, e_phnumber;
-    Button bt_save,viewdata,viewdatall;
+    Button bt_save, viewdata, viewdatall;
     public static final String DATABASE_NAME = "StudentDatabases.db";
     SQLiteDatabase mDatabase;
 
@@ -37,22 +37,21 @@ public class MainActivity extends AppCompatActivity {
         e_phnumber = (EditText) findViewById(R.id.e_phnumber);
 
         bt_save = (Button) findViewById(R.id.btn_save);
-        viewdatall=(Button)findViewById(R.id.viewdataLL);
+        viewdatall = (Button) findViewById(R.id.viewdataLL);
         viewdatall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(MainActivity.this, EmployeeActivity.class);
+                Intent intent = new Intent(MainActivity.this, EmployeeActivity.class);
                 startActivity(intent);
             }
         });
-
 
 
         viewdata = (Button) findViewById(R.id.viewdata);
         viewdata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(MainActivity.this, MainActivity2.class);
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(intent);
             }
         });
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (name.isEmpty() || email.isEmpty() || username.isEmpty() || phone.isEmpty()) {
 
-                    Toast.makeText(MainActivity.this, "Fil the form", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Complete to save", Toast.LENGTH_SHORT).show();
 
                 } else {
 
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     //first is the sql string and second is the parameters that is to be binded with the query
                     mDatabase.execSQL(insertSQL, new String[]{name, email, username, phone});
 
-                    Toast.makeText(MainActivity.this, "Great! Data Saved", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Great! Data saved", Toast.LENGTH_SHORT).show();
                 }
 
 
