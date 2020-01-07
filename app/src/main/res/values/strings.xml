@@ -15,6 +15,7 @@
     <string name="second_hint">"Your motivation"</string>
     <string name="third_hint">"Your task"</string>
     <string name="fourth_hint">"Days to finish"</string>
+    <string name="placeholder">"Placeholder"</string>
     <string name="on">"Bluetooth on"</string>
     <string name="off">"Bluetooth off"</string>
     <string name="bluetooth">"Bluetooth available"</string>

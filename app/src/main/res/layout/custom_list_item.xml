@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#fff">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview"
@@ -17,25 +18,15 @@
             android:layout_height="wrap_content"
             android:padding="8dp">
 
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/imageView"
-                android:layout_width="96dp"
-                android:layout_height="96dp"
-                android:foregroundGravity="center"
-                android:src="@drawable/user"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="2dp" />
-
             <TextView
                 android:id="@+id/textViewName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/imageView"
-                android:text="Apple MacBook 1"
+                android:text="@string/placeholder"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
-                android:textStyle="bold" />
+                android:fontFamily="@font/asap_bold" />
 
             <TextView
                 android:id="@+id/textViewUsername"
@@ -43,11 +34,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewName"
                 android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/imageView"
-                android:text="Apple MacBook 2"
+                android:text="@string/placeholder"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
-                android:textStyle="bold" />
+                android:fontFamily="@font/asap" />
 
             <TextView
                 android:id="@+id/textViewEmail"
@@ -55,12 +45,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewUsername"
                 android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/imageView"
-                android:text="Apple MacBook 3"
+                android:text="@string/placeholder"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
-                android:textStyle="bold" />
-
+                android:fontFamily="@font/asap" />
 
             <TextView
                 android:id="@+id/textViewPhone"
@@ -68,12 +56,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewEmail"
                 android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/imageView"
-                android:text="Apple MacBook 4"
+                android:text="@string/placeholder"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
                 android:textColor="#000000"
-                android:textStyle="bold" />
-
+                android:fontFamily="@font/asap" />
 
         </RelativeLayout>
 
@@ -85,25 +71,25 @@
 
             <ImageView
                 android:id="@+id/buttonEditstudent"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="end"
                 android:layout_margin="10dp"
                 android:src="@drawable/ic_edit_black_24dp"
                 android:text="Edit"
-                android:tint="#3700B3" />
+                android:tint="@color/primaryLightColor" />
 
             <ImageView
                 android:id="@+id/buttonDeleteStudent"
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_margin="20dp"
+                android:layout_gravity="end"
+                android:layout_margin="10dp"
                 android:layout_toRightOf="@id/textViewEmail"
 
                 android:src="@drawable/ic_delete_black_24dp"
                 android:text="Delete"
-                android:tint="#3700B3" />
+                android:tint="@color/primaryLightColor" />
 
         </LinearLayout>
 

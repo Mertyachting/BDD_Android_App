@@ -170,7 +170,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                         "WHERE id = ?;\n";
 
                 mDatabase.execSQL(sql, new String[]{name, email, username, phno, String.valueOf(product.getId())});
-                Toast.makeText(mCtx, "Student Updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mCtx, "Updated", Toast.LENGTH_SHORT).show();
 
                 dialog.dismiss();
             }

@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         if(!bt.isBluetoothAvailable()) {
-            System.out.println("no bluetooth available");
+            System.out.println("No Bluetooth available");
         }
 
         bt.startService(BluetoothState.DEVICE_ANDROID);
@@ -149,10 +149,10 @@ public class MainActivity extends AppCompatActivity {
 
         //set image according to bluetooth status(on/off)
         if (mBlueAdapter.isEnabled()){
-            mBlueIv.setImageResource(R.drawable.ic_delete_black_24dp);
+            mBlueIv.setImageResource(R.drawable.blueetooth_logo);
         }
         else {
-            mBlueIv.setImageResource(R.drawable.user);
+            mBlueIv.setImageResource(R.drawable.blueetooth_logo_black);
         }
 
         //on btn click
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!mBlueAdapter.isEnabled()){
-                    showToast("Turning On Bluetooth...");
+                    showToast("Turning On Bluetooth");
                     //intent to on bluetooth
                     Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                     startActivityForResult(intent, REQUEST_ENABLE_BT);
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
                 if (mBlueAdapter.isEnabled()){
                     mBlueAdapter.disable();
                     showToast("Turning Bluetooth Off");
-                    mBlueIv.setImageResource(R.drawable.user);
+                    mBlueIv.setImageResource(R.drawable.blueetooth_logo_black);
                 }
                 else {
                     showToast("Bluetooth is already off");
@@ -222,12 +222,12 @@ public class MainActivity extends AppCompatActivity {
             case REQUEST_ENABLE_BT:
                 if (resultCode == RESULT_OK){
                     //bluetooth is on
-                    mBlueIv.setImageResource(R.drawable.user);
+                    mBlueIv.setImageResource(R.drawable.blueetooth_logo);
                     showToast("Bluetooth is on");
                 }
                 else {
                     //user denied to turn bluetooth on
-                    showToast("could't on bluetooth");
+                    showToast("Can't turn bluetooth on");
                 }
                 break;
         }

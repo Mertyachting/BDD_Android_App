@@ -131,13 +131,13 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
                 String phno = editphno.getText().toString().trim();
 
                 if (name.isEmpty()) {
-                    editTextName.setError("Name can't be blank");
+                    editTextName.setError("Title can't be blank");
                     editTextName.requestFocus();
                     return;
                 }
 
                 if (username.isEmpty()) {
-                    editusername.setError("Username can't be blank");
+                    editusername.setError("Motivation can't be blank");
                     editusername.requestFocus();
                     return;
                 }
@@ -150,7 +150,7 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
                         "WHERE id = ?;\n";
 
                 mDatabase.execSQL(sql, new String[]{name, email, username, phno, String.valueOf(employee.getId())});
-                Toast.makeText(mCtx, "Student Updated", Toast.LENGTH_SHORT).show();
+                Toast.makeText(mCtx, "Updated", Toast.LENGTH_SHORT).show();
                 reloadEmployeesFromDatabase();
 
                 dialog.dismiss();
