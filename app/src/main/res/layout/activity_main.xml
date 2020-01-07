@@ -44,8 +44,6 @@
         android:inputType="number"
         android:textColorHint="#3700B3" />
 
-
-
     <Button
         android:id="@+id/btn_save"
         android:layout_width="wrap_content"
@@ -72,34 +70,66 @@
         android:background="#03D4AC"
         android:text="View data(ListView)" />
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="#FDE182" >
 
-        <ListView
-            android:id="@+id/list_devices"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:smoothScrollbar="true" />
-
-        <Button
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+    <Button
             android:id="@+id/button_scan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
             android:padding="20dp"
             android:background="#FFC600"
-            android:text="SCAN"
-            android:textSize="25sp"
+            android:text="enable discoverable"
             android:textColor="#7A481B"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/btnONOFF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFC600"
+            android:padding="20dp"
+            android:text="btnONOFF"
+            android:textColor="#7A481B"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnFindUnpairedDevices"
+            android:text="Discover"
+            android:onClick="btnDiscover"/>
+
+        <ListView
+            android:id="@+id/lvNewDevices"
+            android:layout_below="@+id/btnStartConnection"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_alignParentTop="false" />
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnFindUnpairedDevices"
+            android:id="@+id/btnStartConnection"
+            android:text="Start Connection"/>
+
+        <EditText
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter Text Here"
+            android:layout_below="@+id/lvNewDevices"
+            android:id="@+id/editText"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEND"
+            android:id="@+id/btnSend"
+            android:layout_below="@+id/lvNewDevices"/>
     </RelativeLayout>
 
 </LinearLayout>
