@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
-    android:background="#fff"
-    android:orientation="vertical"
-    android:padding="20dp"
-    tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/task_add_question"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/asap_bold"
-        android:text="@string/task_to_add"
-        android:textColor="@color/app_name_text"
-        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/e_name"
@@ -89,13 +76,24 @@
                 android:layout_alignParentEnd="true"
                 android:fontFamily="@font/asap"
                 android:text="@string/overview_list" />
-
+          
         </RelativeLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
+    <Button
+        android:id="@+id/viewdata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="#03D4AC"
+        android:text="View data(RecycleView)" />
+
+    <Button
+        android:id="@+id/viewdataLL"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -122,4 +120,62 @@
             tools:text="@string/list_quote" />
     </LinearLayout>
 
+
+        <!--Display whether bluetooth is available or not-->
+        <TextView
+            android:id="@+id/statusBluetoothTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="#000"/>
+        <!--Bluetooth icon (on/off)-->
+        <ImageView
+            android:id="@+id/bluetoothIv"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <!--On Button-->
+        <Button
+            android:id="@+id/onBtn"
+            android:minWidth="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Turn On"
+            style="@style/Base.Widget.AppCompat.Button.Colored"/>
+        <!--Off btn-->
+        <Button
+            android:id="@+id/offBtn"
+            android:minWidth="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Turn Off"
+            style="@style/Base.Widget.AppCompat.Button.Colored"/>
+        <!--Discoverable button-->
+        <Button
+            android:id="@+id/discoverableBtn"
+            android:minWidth="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Discoverable"
+            style="@style/Base.Widget.AppCompat.Button.Colored"/>
+        <!--Get list of paired devices button-->
+        <Button
+            android:id="@+id/pairedBtn"
+            android:minWidth="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get Paired Devices"
+            style="@style/Base.Widget.AppCompat.Button.Colored"/>
+        <!--Show paired devices here-->
+        <TextView
+            android:id="@+id/pairedTv"
+            android:minWidth="50dp"
+            android:text=""
+            android:textColor="#000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
 </LinearLayout>
+
