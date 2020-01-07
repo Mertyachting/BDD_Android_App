@@ -4,7 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:padding="20dp"
+    android:orientation="vertical"
+    android:background="#ffff"
+    tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/task_add_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/asap_bold"
+        android:text="@string/task_to_add"
+        android:textColor="@color/app_name_text"
+        android:textSize="18sp"/>
 
     <EditText
         android:id="@+id/e_name"
@@ -52,130 +66,161 @@
         android:orientation="horizontal">
 
         <RelativeLayout
-            android:id="@+id/RelativeLayout01"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:padding="10dp">
+            android:layout_height="fill_parent">
 
             <Button
                 android:id="@+id/btn_save"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
                 android:layout_margin="20dp"
-                android:background="@color/primaryLightColor"
                 android:fontFamily="@font/asap_bold"
-                android:text="@string/create_list"
-                android:layout_alignParentStart="true" />
+                android:text="@string/create_list" />
 
             <Button
                 android:id="@+id/viewdata"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:background="@color/button_background"
                 android:layout_alignParentEnd="true"
+                android:layout_margin="20dp"
                 android:fontFamily="@font/asap"
                 android:text="@string/overview_list" />
-          
+
+            <Button
+                android:id="@+id/viewdataLL"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@android:color/transparent" />
+
         </RelativeLayout>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-    <Button
-        android:id="@+id/viewdata"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="#03D4AC"
-        android:text="View data(RecycleView)" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/viewdataLL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/viewdataLL"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@android:color/transparent" />
-
-        <TextView
-            android:id="@+id/start_quote2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/asap_italic"
-            android:text="@string/list_quote"
-            android:textAlignment="center"
-            android:textColor="@color/quote"
-            android:textSize="16sp"
-            tools:text="@string/list_quote" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <!--Display whether bluetooth is available or not-->
-        <TextView
-            android:id="@+id/statusBluetoothTv"
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/start_quote2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/asap_italic"
+                android:text="@string/list_quote"
+                android:textAlignment="center"
+                android:textColor="@color/quote"
+                android:textSize="16sp"
+                tools:text="@string/list_quote" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:textColor="#000"/>
-        <!--Bluetooth icon (on/off)-->
-        <ImageView
-            android:id="@+id/bluetoothIv"
-            android:layout_width="50dp"
-            android:layout_height="50dp" />
+            android:padding="10dp">
+
+            <!--Display whether bluetooth is available or not-->
+            <TextView
+                android:id="@+id/statusBluetoothTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/asap"
+                android:text="@string/bluetooth" />
+
+            <!--Bluetooth icon (on/off)-->
+            <ImageView
+                android:id="@+id/bluetoothIv"
+                android:layout_width="10dp"
+                android:layout_height="10dp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <!--On Button-->
         <Button
             android:id="@+id/onBtn"
-            android:minWidth="50dp"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Turn On"
-            style="@style/Base.Widget.AppCompat.Button.Colored"/>
+            android:text="@string/on"
+            android:textSize="10sp" />
+
         <!--Off btn-->
         <Button
             android:id="@+id/offBtn"
-            android:minWidth="50dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Turn Off"
-            style="@style/Base.Widget.AppCompat.Button.Colored"/>
+            android:layout_marginStart="5dp"
+            android:text="@string/off"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:textSize="10sp" />
+
         <!--Discoverable button-->
         <Button
             android:id="@+id/discoverableBtn"
-            android:minWidth="50dp"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Discoverable"
-            style="@style/Base.Widget.AppCompat.Button.Colored"/>
+            android:layout_marginStart="5dp"
+            android:text="@string/discoverable"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <!--Get list of paired devices button-->
         <Button
             android:id="@+id/pairedBtn"
-            android:minWidth="50dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get Paired Devices"
-            style="@style/Base.Widget.AppCompat.Button.Colored"/>
-        <!--Show paired devices here-->
+            android:text="@string/paired_dev"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:textSize="10sp" />
+
         <TextView
             android:id="@+id/pairedTv"
-            android:minWidth="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="5dp"
             android:text=""
             android:textColor="#000"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
+            android:textSize="10sp" />
+    </LinearLayout>
 
 </LinearLayout>
-
