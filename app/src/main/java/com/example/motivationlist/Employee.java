@@ -1,7 +1,5 @@
 package com.example.motivationlist;
 
-
-
 public class Employee {
     private int id;
     private String mname;

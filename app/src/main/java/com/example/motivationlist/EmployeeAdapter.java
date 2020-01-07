@@ -144,12 +144,12 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
 
                 String sql = "UPDATE Student \n" +
                         "SET Name = ?, \n" +
-                        "Email = ?,\n"+
-                        "Username = ?,\n"+
+                        "Email = ?,\n" +
+                        "Username = ?,\n" +
                         "PhoneNO= ? \n" +
                         "WHERE id = ?;\n";
 
-                mDatabase.execSQL(sql, new String[]{name, email,username,phno, String.valueOf(employee.getId())});
+                mDatabase.execSQL(sql, new String[]{name, email, username, phno, String.valueOf(employee.getId())});
                 Toast.makeText(mCtx, "Student Updated", Toast.LENGTH_SHORT).show();
                 reloadEmployeesFromDatabase();
 
