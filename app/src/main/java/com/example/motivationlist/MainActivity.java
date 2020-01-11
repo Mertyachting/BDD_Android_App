@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.clj.fastble.BleManager;
 import com.example.motivationlist.test.MainActivity2;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -33,13 +34,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mDatabase = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
         createEmployeeTable();
-        BluetoothSPP bt = new BluetoothSPP(this);
-        if(!bt.isBluetoothAvailable()) {
-            System.out.println("notavailable");
-        }
-        else {
-            bt.startService(BluetoothState.DEVICE_ANDROID);
-        }
+        BleManager.getInstance().init(getApplication());
+        
 
 
 
@@ -60,11 +56,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if(!bt.isBluetoothAvailable()) {
-            System.out.println("no bluetooth available");
-        }
 
-        bt.startService(BluetoothState.DEVICE_ANDROID);
 
 
 
