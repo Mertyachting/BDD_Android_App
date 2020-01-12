@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,11 @@ import android.bluetooth.BluetoothDevice;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Set;
 
 
@@ -28,6 +34,9 @@ import app.akexorcist.bluetotohspp.library.BluetoothState;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String SERVER = "http://10.0.2.2:3000";
+
+    private TextView tvServerResponse;
 
     EditText e_name, e_email, e_username, e_phnumber;
     Button bt_save, viewdata, viewdatall;
@@ -37,27 +46,41 @@ public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_ENABLE_BT = 0;
     private static final int REQUEST_DISCOVER_BT = 1;
 
-    TextView mStatusBlueTv, mPairedTv;
-    ImageView mBlueIv;
-    Button mOnBtn, mOffBtn, mDiscoverBtn, mPairedBtn;
+    /* TextView mStatusBlueTv, mPairedTv;
+     ImageView mBlueIv;
+     Button mOnBtn, mOffBtn, mDiscoverBtn, mPairedBtn;
 
-    BluetoothAdapter mBlueAdapter;
+     BluetoothAdapter mBlueAdapter;*/
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        View.OnClickListener onButtonClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HttpGetRequest request = new HttpGetRequest();
+                request.execute();
+            }
+        };
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tvServerResponse = findViewById(R.id.textView);
+        Button contactServerButton = findViewById(R.id.button);
+        contactServerButton.setOnClickListener(onButtonClickListener);
         mDatabase = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
         createEmployeeTable();
-        BluetoothSPP bt = new BluetoothSPP(this);
+
+
+        /*BluetoothSPP bt = new BluetoothSPP(this);
         if(!bt.isBluetoothAvailable()) {
             System.out.println("notavailable");
         }
         else {
             bt.startService(BluetoothState.DEVICE_ANDROID);
-        }
-
-
+        }*/
 
 
         //FindById (Button and Edittxt)
@@ -76,11 +99,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if(!bt.isBluetoothAvailable()) {
+       /* if(!bt.isBluetoothAvailable()) {
             System.out.println("No Bluetooth available");
         }
 
-        bt.startService(BluetoothState.DEVICE_ANDROID);
+        bt.startService(BluetoothState.DEVICE_ANDROID);*/
 
 
         viewdata = (Button) findViewById(R.id.viewdata);
@@ -128,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        mStatusBlueTv = findViewById(R.id.statusBluetoothTv);
+      /*  mStatusBlueTv = findViewById(R.id.statusBluetoothTv);
         mPairedTv     = findViewById(R.id.pairedTv);
         mBlueIv       = findViewById(R.id.bluetoothIv);
         mOnBtn        = findViewById(R.id.onBtn);
@@ -211,12 +234,59 @@ public class MainActivity extends AppCompatActivity {
                     showToast("Turn on bluetooth to get paired devices");
                 }
             }
-        });
+        });*/
 
 
     }
 
-    @Override
+    public class HttpGetRequest extends AsyncTask<Void, Void, String> {
+
+        static final String REQUEST_METHOD = "GET";
+        static final int READ_TIMEOUT = 15000;
+        static final int CONNECTION_TIMEOUT = 15000;
+
+        @Override
+        protected String doInBackground(Void... params){
+            String result;
+            String inputLine;
+
+            try {
+                // connect to the server
+                URL myUrl = new URL(SERVER);
+                HttpURLConnection connection =(HttpURLConnection) myUrl.openConnection();
+                connection.setRequestMethod(REQUEST_METHOD);
+                connection.setReadTimeout(READ_TIMEOUT);
+                connection.setConnectTimeout(CONNECTION_TIMEOUT);
+                connection.connect();
+
+                // get the string from the input stream
+                InputStreamReader streamReader = new InputStreamReader(connection.getInputStream());
+                BufferedReader reader = new BufferedReader(streamReader);
+                StringBuilder stringBuilder = new StringBuilder();
+                while((inputLine = reader.readLine()) != null){
+                    stringBuilder.append(inputLine);
+                }
+                reader.close();
+                streamReader.close();
+                result = stringBuilder.toString();
+
+            } catch(IOException e) {
+                e.printStackTrace();
+                result = "error";
+            }
+
+            return result;
+        }
+
+        protected void onPostExecute(String result){
+            super.onPostExecute(result);
+            tvServerResponse.setText(result);
+        }
+    }
+
+
+
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode){
             case REQUEST_ENABLE_BT:
@@ -232,19 +302,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
+    }*/
+
 
     //toast message function
     private void showToast(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
-
-
-
-
-
-
-
 
 
 

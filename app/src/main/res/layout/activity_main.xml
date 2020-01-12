@@ -98,8 +98,8 @@
 
             <Button
                 android:id="@+id/viewdataLL"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="7dp"
+                android:layout_height="11dp"
                 android:background="@android:color/transparent" />
 
         </RelativeLayout>
@@ -123,7 +123,7 @@
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/start_quote2"
+                android:id="@+id/start_quote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -146,89 +146,47 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp">
-
-            <!--Display whether bluetooth is available or not-->
-            <TextView
-                android:id="@+id/statusBluetoothTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:fontFamily="@font/asap"
-                android:text="@string/bluetooth" />
-
-            <!--Bluetooth icon (on/off)-->
-            <ImageView
-                android:id="@+id/bluetoothIv"
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:tint="#81000000" />
-
-        </RelativeLayout>
+            android:padding="10dp"/>
     </LinearLayout>
 
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <!--On Button-->
-        <Button
-            android:id="@+id/onBtn"
-            style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/on"
-            android:textSize="10sp" />
 
         <!--Off btn-->
-        <Button
-            android:id="@+id/offBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="@string/off"
-            style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:textSize="10sp" />
 
         <!--Discoverable button-->
-        <Button
-            android:id="@+id/discoverableBtn"
-            style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:text="@string/discoverable"
-            android:textSize="10sp" />
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"/>
 
-        <!--Get list of paired devices button-->
-        <Button
-            android:id="@+id/pairedBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/paired_dev"
-            style="@style/Base.Widget.AppCompat.Button.Colored"
-            android:textSize="10sp" />
+    <Button
+        android:id="@+id/quote_button"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="@string/off"
+        android:textSize="10sp" />
 
-        <TextView
-            android:id="@+id/pairedTv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="5dp"
-            android:text=""
-            android:textColor="#000"
-            android:textSize="10sp" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
 
 </LinearLayout>
