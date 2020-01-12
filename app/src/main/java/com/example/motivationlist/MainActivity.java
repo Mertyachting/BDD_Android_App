@@ -30,6 +30,7 @@ import java.io.OutputStream;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Random;
 import java.util.Set;
 
 
@@ -44,7 +45,19 @@ import app.akexorcist.bluetotohspp.library.BluetoothState;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String SERVER = "http://10.0.2.2:3000/";
+
+
+    Random rand = new Random();
+
+
+    boolean clicked = false;
+
+    public String Server(){
+        int path = rand.nextInt(3);
+        String SERVER = "http://10.0.2.2:3000/"+path;
+        return SERVER;
+    }
+
 
     private TextView tvServerResponse;
 
@@ -73,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         View.OnClickListener onButtonClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Server();
                 HttpGetRequest request = new HttpGetRequest();
                 request.execute();
             }
@@ -271,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 // connect to the server
-                URL myUrl = new URL(SERVER);
+                URL myUrl = new URL(Server());
                 HttpURLConnection connection =(HttpURLConnection) myUrl.openConnection();
                 connection.setRequestMethod(REQUEST_METHOD);
                 connection.setReadTimeout(READ_TIMEOUT);
