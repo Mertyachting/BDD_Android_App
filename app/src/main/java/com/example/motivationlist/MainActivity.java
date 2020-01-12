@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.widget.ImageView;
@@ -32,6 +33,9 @@ import java.lang.reflect.Method;
 import java.util.Set;
 
 
+=======
+import com.clj.fastble.BleManager;
+>>>>>>> 6c3f25d669d83001c46afe6ab6241ca87e0ca556
 import com.example.motivationlist.test.MainActivity2;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -68,13 +72,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mDatabase = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
         createEmployeeTable();
-        BluetoothSPP bt = new BluetoothSPP(this);
-        if(!bt.isBluetoothAvailable()) {
-            System.out.println("notavailable");
-        }
-        else {
-            bt.startService(BluetoothState.DEVICE_ANDROID);
-        }
+        BleManager.getInstance().init(getApplication());
+        
 
 
 
@@ -95,11 +94,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
         if(!bt.isBluetoothAvailable()) {
             System.out.println("No Bluetooth available");
         }
+=======
+>>>>>>> 6c3f25d669d83001c46afe6ab6241ca87e0ca556
 
-        bt.startService(BluetoothState.DEVICE_ANDROID);
 
 
         viewdata = (Button) findViewById(R.id.viewdata);
