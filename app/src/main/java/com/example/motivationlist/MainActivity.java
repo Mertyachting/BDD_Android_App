@@ -2,10 +2,17 @@ package com.example.motivationlist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.bluetooth.BluetoothServerSocket;
+import android.bluetooth.BluetoothSocket;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Message;
+import android.os.ParcelUuid;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +24,11 @@ import android.bluetooth.BluetoothDevice;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.lang.reflect.Method;
 import java.util.Set;
 
 
@@ -25,6 +37,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import app.akexorcist.bluetotohspp.library.BluetoothSPP;
 import app.akexorcist.bluetotohspp.library.BluetoothState;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_ENABLE_BT = 0;
     private static final int REQUEST_DISCOVER_BT = 1;
+
+    private OutputStream outputStream;
+    private InputStream inStream;
+
+    DataOutputStream os;
 
     TextView mStatusBlueTv, mPairedTv;
     ImageView mBlueIv;
@@ -213,8 +232,57 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        registerReceiver(discoveryResult, new IntentFilter(BluetoothDevice.ACTION_FOUND));
+
+        mBlueAdapter.enable();
+        if (!mBlueAdapter.isDiscovering()) {
+            mBlueAdapter.startDiscovery();
+        }
 
     }
+
+    BroadcastReceiver discoveryResult = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            String remoteDeviceName = intent.getStringExtra(BluetoothDevice.EXTRA_NAME);
+            BluetoothDevice remoteDevice;
+
+            remoteDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
+
+            Toast.makeText(getApplicationContext(), "Discovered: " + remoteDeviceName + " address " + remoteDevice.getAddress(), Toast.LENGTH_SHORT).show();
+
+            try{
+                BluetoothDevice device = mBlueAdapter.getRemoteDevice(remoteDevice.getAddress());
+
+                Method m = device.getClass().getMethod("createRfcommSocket", new Class[] {int.class});
+
+                BluetoothSocket clientSocket =  (BluetoothSocket) m.invoke(device, 1);
+
+                clientSocket.connect();
+
+                os = new DataOutputStream(clientSocket.getOutputStream());
+
+                new clientSock().start();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.e("BLUETOOTH", e.getMessage());
+            }
+        }
+    };
+
+
+
+    public class clientSock extends Thread {
+        public void run () {
+            try {
+                os.writeBytes("anything you want"); // anything you want
+                os.flush();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+                return;
+            }
+        }
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -240,14 +308,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
-
     private void createEmployeeTable() {
         mDatabase.execSQL("CREATE TABLE IF NOT EXISTS Student " +
                 "(\n" +
@@ -260,4 +320,8 @@ public class MainActivity extends AppCompatActivity {
 
         );
     }
+
+
+
+
 }
