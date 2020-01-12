@@ -4,11 +4,7 @@ plugins {
 
 apply plugin: 'com.android.application'
 apply plugin: 'org.sonarqube'
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 6c3f25d669d83001c46afe6ab6241ca87e0ca556
 
 android {
     compileSdkVersion 29
