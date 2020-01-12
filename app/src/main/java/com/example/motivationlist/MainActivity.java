@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tvServerResponse = findViewById(R.id.textView_request);
+        tvServerResponse = findViewById(R.id.start_quote2);
         Button contactServerButton = findViewById(R.id.button_request);
         contactServerButton.setOnClickListener(onButtonClickListener);
         mDatabase = openOrCreateDatabase(DATABASE_NAME, MODE_PRIVATE, null);
